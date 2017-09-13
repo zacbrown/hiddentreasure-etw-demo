@@ -1,22 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hiddentreasure-etw-demo", "hiddentreasure-etw-demo\hiddentreasure-etw-demo.csproj", "{E8C00259-D30C-44E9-856D-239E32B45EB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E8C00259-D30C-44E9-856D-239E32B45EB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8C00259-D30C-44E9-856D-239E32B45EB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8C00259-D30C-44E9-856D-239E32B45EB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8C00259-D30C-44E9-856D-239E32B45EB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8C00259-D30C-44E9-856D-239E32B45EB3}.Debug|x64.ActiveCfg = Debug|x64
+		{E8C00259-D30C-44E9-856D-239E32B45EB3}.Debug|x64.Build.0 = Debug|x64
+		{E8C00259-D30C-44E9-856D-239E32B45EB3}.Release|x64.ActiveCfg = Release|x64
+		{E8C00259-D30C-44E9-856D-239E32B45EB3}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2389584E-E541-4E6F-87E1-30AF772F440E}
 	EndGlobalSection
 EndGlobal
