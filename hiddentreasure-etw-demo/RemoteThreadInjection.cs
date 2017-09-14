@@ -1,5 +1,4 @@
 ﻿using System;
-
 using O365.Security.ETW;
 
 namespace hiddentreasure_etw_demo

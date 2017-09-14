@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DNSLookup.cs" />
+    <Compile Include="PowerShellImageLoad.cs" />
     <Compile Include="PowerShellMethodExecution.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
