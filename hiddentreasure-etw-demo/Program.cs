@@ -6,7 +6,8 @@ namespace hiddentreasure_etw_demo
         static void Main(string[] args)
         {
             //DNSLookup.Run();
-            PowerShellMethodExecution.Run();
+            //PowerShellMethodExecution.Run();
+            RemoteThreadInjection.Run();
         }
     }
 }
