@@ -8,8 +8,8 @@ namespace hiddentreasure_etw_demo
         public static UserTrace CreateTrace()
         {
             var filter = new EventFilter(Filter
-                .EventIdIs(3018)
-                .Or(Filter.EventIdIs(3020)));
+                .EventIdIs(3018) // cached lookup
+                .Or(Filter.EventIdIs(3020))); // live lookup
 
             filter.OnEvent += (IEventRecord r) => {
                 var query = r.GetUnicodeString("QueryName");
