@@ -5,7 +5,7 @@ namespace hiddentreasure_etw_demo
 {
     public static class RemoteThreadInjection
     {
-        public static void Run()
+        public static UserTrace CreateTrace()
         {
             var filter = new EventFilter(Filter
                 .EventIdIs(3));
@@ -27,7 +27,7 @@ namespace hiddentreasure_etw_demo
 
             var trace = new UserTrace();
             trace.Enable(provider);
-            trace.Start();
+            return trace;
         }
     }
 }
