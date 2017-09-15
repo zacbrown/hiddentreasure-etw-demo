@@ -16,6 +16,10 @@ namespace hiddentreasure_etw_demo
 
                 if (sourcePID != targetPID)
                 {
+                    // This is where you'd check that the target process's
+                    // parent PID isn't the source PID. I've left it off for
+                    // brevity since .NET doesn't provide an easy way to get
+                    // parent PID :(.
                     var createdTID = r.GetUInt32("ThreadID");
                     var fmt = "Possible thread injection! - SourcePID: {0}, TargetPID: {1}, CreatedTID: {2}";
                     Console.WriteLine(fmt, sourcePID, targetPID, createdTID);
