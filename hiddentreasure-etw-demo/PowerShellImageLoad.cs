@@ -8,6 +8,10 @@ namespace hiddentreasure_etw_demo
     {
         public static UserTrace CreateTrace()
         {
+            // Unfortunately, this detection won't work for
+            // processes that *already* have System.Management.Automation.dll
+            // loaded into them. It does not check existing state, only activity
+            // that occurs while the monitoring is enabled.
             var filter = new EventFilter(Filter
                 .EventIdIs(5)
                 .And(UnicodeString.IContains("ImageName", @"\System.Management.Automation.dll")));
