@@ -7,6 +7,8 @@ namespace hiddentreasure_etw_demo
     {
         public static UserTrace CreateTrace()
         {
+            // For a more thorough example of how to implement this detection,
+            // have a look at https://github.com/zacbrown/PowerShellMethodAuditor
             var filter = new EventFilter(Filter
                 .EventIdIs(7937)
                 .And(UnicodeString.Contains("Payload", "Started"))
