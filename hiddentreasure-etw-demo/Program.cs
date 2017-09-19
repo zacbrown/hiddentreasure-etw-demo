@@ -36,6 +36,9 @@ namespace hiddentreasure_etw_demo
                 }
             };
 
+            // This call is blocking. The thread that calls UserTrace.Start()
+            // is donating itself to the ETW subsystem to pump events off
+            // of the buffer.
             trace?.Start();
         }
 
