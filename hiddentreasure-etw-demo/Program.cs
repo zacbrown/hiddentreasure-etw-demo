@@ -42,8 +42,9 @@ namespace hiddentreasure_etw_demo
             Console.WriteLine("\t(1) Log DNS lookups on system");
             Console.WriteLine("\t(2) Log PowerShell function executions");
             Console.WriteLine("\t(3) Log PowerShell DLL loaded into processes");
-            Console.WriteLine("\t(4) Log remote thread injections\n");
-            Console.Write("Selection: ");
+            Console.WriteLine("\t(4) Log remote thread injections");
+            Console.WriteLine("\t(5) Log possible data exfiltrations (over 1MB)");
+            Console.Write("\nSelection: ");
             var strSelection = Console.ReadLine();
 
             int selection;
@@ -63,6 +64,9 @@ namespace hiddentreasure_etw_demo
                     case 4:
                         Console.WriteLine("Logging remote thread injections...");
                         return RemoteThreadInjection.CreateTrace();
+                    case 5:
+                        Console.WriteLine("Logging possible data exfiltrations (over 1MB)...");
+                        return PossibleExfiltration.CreateTrace();
                 }
             }
 
