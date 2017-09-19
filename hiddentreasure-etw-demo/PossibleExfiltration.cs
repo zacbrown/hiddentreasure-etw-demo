@@ -17,12 +17,16 @@ namespace hiddentreasure_etw_demo
                 .Or(Filter.EventIdIs(58))); // IPv6 send
 
             filter.OnEvent += (IEventRecord r) => {
-                var daddr = r.GetIPAddress("daddr");
-                var bytes = r.GetUInt32("size");
+                var daddr = r.GetIPAddress("daddr"); // destination
+                var bytes = r.GetUInt32("size"); // size in bytes
                 var pid = (int)r.ProcessId;
 
+                // if we don't have the PID in our table, add it
                 if (!pidToDestination.ContainsKey(pid)) pidToDestination[pid] = new Dictionary<IPAddress, uint>();
+
+                // if we've never seen the destination, set it to zero
                 if (!pidToDestination[pid].ContainsKey(daddr)) pidToDestination[pid][daddr] = 0;
+
                 pidToDestination[pid][daddr] += bytes;
             };
 
