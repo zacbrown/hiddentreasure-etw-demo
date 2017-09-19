@@ -44,6 +44,7 @@ namespace hiddentreasure_etw_demo
             filter.OnEvent += (IEventRecord r) => {
                 var pid = (int)r.ProcessId;
 
+                // if we've seen any network traffic
                 if (pidToDestination.ContainsKey(pid))
                 {
                     var destinationData = pidToDestination[pid];
@@ -54,6 +55,7 @@ namespace hiddentreasure_etw_demo
                     foreach (var destination in destinationData)
                     {
                         if (destination.Value < (1024 * 1024)) return; // 1MB threshold
+
                         Console.WriteLine($"{processName} (pid: {pid}) transferred "
                             + $"{destination.Value} bytes"
                             + $" to {destination.Key.ToString()}");
