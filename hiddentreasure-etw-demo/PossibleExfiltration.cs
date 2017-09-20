@@ -72,7 +72,7 @@ namespace hiddentreasure_etw_demo
             return provider;
         }
 
-        public static UserTrace CreateTrace()
+        public static void Run()
         {
             var networkProvider = CreateNetworkProvider();
             var processProvider = CreateProcessProvider();
@@ -80,7 +80,14 @@ namespace hiddentreasure_etw_demo
             var trace = new UserTrace();
             trace.Enable(networkProvider);
             trace.Enable(processProvider);
-            return trace;
+
+            // Setup Ctrl-C to call trace.Stop();
+            Helpers.SetupCtrlC(trace);
+
+            // This call is blocking. The thread that calls UserTrace.Start()
+            // is donating itself to the ETW subsystem to pump events off
+            // of the buffer.
+            trace.Start();
         }
     }
 }

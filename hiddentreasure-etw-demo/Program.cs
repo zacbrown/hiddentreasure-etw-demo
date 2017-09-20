@@ -10,40 +10,6 @@ namespace hiddentreasure_etw_demo
     {
         static void Main(string[] args)
         {
-            var trace = PresentChoice();
-
-            // It's important that this comes before the
-            // trace.Start() call below. The Start() call will
-            // block the thread since it gets donated to ETW for
-            // processing.
-            Console.CancelKeyPress += (sender, eventArg) =>
-            {
-                if (trace != null)
-                {
-                    // Calling Stop on the trace is important
-                    // because there are a limited number of trace
-                    // sessions permitted on the OS. If you kill the
-                    // program without calling Stop(), the trace session
-                    // is left open and would need to be manually cleaned
-                    // up.
-                    //
-                    // The easiest way to clean up the traces is to stop
-                    // and delete them in the Computer Management>Performance
-                    // section called "Event Trace Sessions".
-                    //
-                    // Alternatively, you can restart the machine.
-                    trace.Stop();
-                }
-            };
-
-            // This call is blocking. The thread that calls UserTrace.Start()
-            // is donating itself to the ETW subsystem to pump events off
-            // of the buffer.
-            trace?.Start();
-        }
-
-        static UserTrace PresentChoice()
-        {
             Console.WriteLine("Please select a scenario to run (enter a number):");
             Console.WriteLine("\t(1) Log DNS lookups on system");
             Console.WriteLine("\t(2) Log PowerShell function executions");
@@ -60,24 +26,31 @@ namespace hiddentreasure_etw_demo
                 {
                     case 1:
                         Console.WriteLine("Logging DNS lookups...");
-                        return DNSLookup.CreateTrace();
+                        DNSLookup.Run();
+                        return;
                     case 2:
                         Console.WriteLine("Logging PowerShell method executions...");
-                        return PowerShellMethodExecution.CreateTrace();
+                        PowerShellMethodExecution.Run();
+                        return;
                     case 3:
                         Console.WriteLine("Logging PowerShell DLL loads...");
-                        return PowerShellImageLoad.CreateTrace();
+                        PowerShellImageLoad.Run();
+                        return;
                     case 4:
                         Console.WriteLine("Logging remote thread injections...");
-                        return RemoteThreadInjection.CreateTrace();
+                        RemoteThreadInjection.Run();
+                        return;
                     case 5:
                         Console.WriteLine("Logging possible data exfiltrations (over 1MB)...");
-                        return PossibleExfiltration.CreateTrace();
+                        PossibleExfiltration.Run();
+                        return;
+                    default:
+                        Console.WriteLine($"No selection or invalid selection ({selection}) made, exiting.");
+                        return;
                 }
             }
 
-            Console.WriteLine("No selection made, exiting.");
-            return null;
+            Console.WriteLine("Ctrl-C pressed, exiting.");
         }
     }
 }

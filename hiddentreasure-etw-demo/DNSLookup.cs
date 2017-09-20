@@ -8,7 +8,7 @@ namespace hiddentreasure_etw_demo
 {
     public static class DNSLookup
     {
-        public static UserTrace CreateTrace()
+        public static void Run()
         {
             var filter = new EventFilter(
                 Filter.EventIdIs(3018) // cached lookup
@@ -25,7 +25,14 @@ namespace hiddentreasure_etw_demo
 
             var trace = new UserTrace();
             trace.Enable(provider);
-            return trace;
+
+            // Setup Ctrl-C to call trace.Stop();
+            Helpers.SetupCtrlC(trace);
+
+            // This call is blocking. The thread that calls UserTrace.Start()
+            // is donating itself to the ETW subsystem to pump events off
+            // of the buffer.
+            trace.Start();
         }
     }
 }
