@@ -15,9 +15,7 @@ namespace hiddentreasure_etw_demo
             var filter = new EventFilter(Filter
                 .EventIdIs(7937)
                 .And(UnicodeString.Contains("Payload", "Started"))
-                .And(UnicodeString.Contains("ContextInfo", "Command Type = Function"))
-                .And(UnicodeString.Contains("ContextInfo", "Command Name = prompt").op_LogicalNot())
-                .And(UnicodeString.Contains("ContextInfo", "Command Name = PSConsoleHostReadline").op_LogicalNot()));
+                .And(UnicodeString.Contains("ContextInfo", "Command Type = Function")));
 
             filter.OnEvent += (IEventRecord r) => {
                 var method = r.GetUnicodeString("ContextInfo");
