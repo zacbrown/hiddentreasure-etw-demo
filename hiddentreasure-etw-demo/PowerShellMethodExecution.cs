@@ -14,8 +14,7 @@ namespace hiddentreasure_etw_demo
             // have a look at https://github.com/zacbrown/PowerShellMethodAuditor
             var filter = new EventFilter(Filter
                 .EventIdIs(7937)
-                .And(UnicodeString.Contains("Payload", "Started"))
-                .And(UnicodeString.Contains("ContextInfo", "Command Type = Function")));
+                .And(UnicodeString.Contains("Payload", "Started")));
 
             filter.OnEvent += (IEventRecord r) => {
                 var method = r.GetUnicodeString("ContextInfo");
