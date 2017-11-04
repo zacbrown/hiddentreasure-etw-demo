@@ -17,7 +17,7 @@ namespace hiddentreasure_etw_demo
         {
             var filter = new EventFilter(
                 Filter.EventIdIs(10) // IPv4 send
-                .Or(Filter.EventIdIs(58))); // IPv6 send
+                .Or(Filter.EventIdIs(26))); // IPv6 send
 
             filter.OnEvent += (IEventRecord r) => {
                 var daddr = r.GetIPAddress("daddr"); // destination
